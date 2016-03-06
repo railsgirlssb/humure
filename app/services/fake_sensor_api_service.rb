@@ -1,11 +1,11 @@
 class FakeSensorApiService
 
   def temperature
-    24.50
+    return NumberInRangeByTime.integer(seed_value: Time.now.to_i, range: 15..30, unit_duration: 3).to_f
   end
 
   def humidity
-    65
+    return NumberInRangeByTime.integer(seed_value: Time.now.to_i, range: 30..70, unit_duration: 1).to_f
   end
 
   def lamp_status
