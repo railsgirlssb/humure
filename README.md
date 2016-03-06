@@ -8,7 +8,7 @@ The Humidity and temperature sensors app
 ### GET /humidity
 
 ```shell
-$ curl -H "Accept: application/json" localhost:4000/api/humidity
+$ curl -H "Accept: application/json" localhost:3000/api/humidity
 ```
 
 ```javascript
@@ -19,7 +19,7 @@ $ curl -H "Accept: application/json" localhost:4000/api/humidity
 ### GET /temperature
 
 ```shell
-$ curl -H "Accept: application/json" localhost:4000/api/temperature
+$ curl -H "Accept: application/json" localhost:3000/api/temperature
 ```
 
 ```javascript
@@ -30,7 +30,7 @@ $ curl -H "Accept: application/json" localhost:4000/api/temperature
 ### GET /lamp
 
 ```shell
-$ curl -H "Accept: application/json" localhost:4000/api/lamp
+$ curl -H "Accept: application/json" localhost:3000/api/lamp
 ```
 
 ```javascript
@@ -41,7 +41,7 @@ $ curl -H "Accept: application/json" localhost:4000/api/lamp
 ### PUT /lamp/on
 
 ```shell
-$ curl -H "Accept: application/json" -X PUT -d '' localhost:4000/api/lamp/on
+$ curl -H "Accept: application/json" -X PUT -d '' localhost:3000/api/lamp/on
 ```
 
 ```javascript
@@ -52,7 +52,7 @@ $ curl -H "Accept: application/json" -X PUT -d '' localhost:4000/api/lamp/on
 ### PUT /lamp/off
 
 ```shell
-$ curl -H "Accept: application/json" -X PUT -d '' localhost:4000/api/lamp/off
+$ curl -H "Accept: application/json" -X PUT -d '' localhost:3000/api/lamp/off
 ```
 
 ```javascript
@@ -63,7 +63,7 @@ $ curl -H "Accept: application/json" -X PUT -d '' localhost:4000/api/lamp/off
 ### PUT /lamp/color/240/65/36
 
 ```shell
-$ curl -H "Accept: application/json" -X PUT -d '' localhost:4000/api/lamp/color/240/65/36
+$ curl -H "Accept: application/json" -X PUT -d '' localhost:3000/api/lamp/color/240/65/36
 ```
 
 ```javascript
