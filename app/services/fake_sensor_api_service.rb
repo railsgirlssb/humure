@@ -5,7 +5,7 @@ class FakeSensorApiService
   end
 
   def humidity
-    return NumberInRangeByTime.integer(seed_value: Time.now.to_i, range: 30..70, unit_duration: 1).to_f
+    return NumberInRangeByTime.integer(seed_value: Time.now.to_i, range: 30..70, unit_duration: 1)
   end
 
   def lamp_status
