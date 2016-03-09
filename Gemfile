@@ -20,7 +20,7 @@ gem 'foundation-rails'
 gem 'font-awesome-sass'
 
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-gem 'draper'
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 
 
 group :development, :test do
