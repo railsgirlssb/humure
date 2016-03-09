@@ -69,3 +69,16 @@ $ curl -H "Accept: application/json" -X PUT -d '' localhost:3000/api/lamp/color/
 ```javascript
 {"value":[240,65,36]}
 ```
+
+# Local Production mode
+
+For starting up on the pi without a real webserver, you need to start as follows:
+
+```
+export RAILS_SERVE_STATIC_FILES=true
+export RAILS_ENV=production
+export SECRET_KEY_BASE=$( rails secret )
+
+rails s
+```
+
