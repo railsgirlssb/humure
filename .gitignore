@@ -19,3 +19,9 @@
 # store rvm config only locally
 .ruby-gemset
 .ruby-version
+
+# ignore generated schema
+db/schema.rb
+
+# ignore precompiled assets
+public/assets
