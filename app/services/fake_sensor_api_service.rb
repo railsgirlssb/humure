@@ -21,7 +21,7 @@ class FakeSensorApiService
   end
 
   def change_lamp_color(red, green, blue)
-    [240,65,36]
+    [red.to_i, green.to_i, blue.to_i]
   end
 
 end
