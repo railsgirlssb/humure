@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require foundation.core
+//= require foundation.util.mediaQuery
+//= require foundation.equalizer
 //= require_tree .
+
+
+$(function() {
+  $(document).foundation();
+});

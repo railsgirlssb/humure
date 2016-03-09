@@ -1,0 +1,21 @@
+!!! 5
+%html{ lang: "en" }
+  %head
+    %meta{ charset: "utf-8" }
+
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+
+    %title Humure
+
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tag
+
+  %body
+    .row
+      = yield
+
+    %footer
+      .row
+        .columns.small-12
+          Rails Girls Saarbrücken

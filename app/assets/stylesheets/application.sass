@@ -12,4 +12,41 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation
  */
+
+@import 'foundation_and_overrides'
+@import 'font-awesome-sprockets'
+@import 'font-awesome'
+
+h3
+  font-size: rem-calc(25)
+
+.dashboard-container
+  &__header
+    margin:
+      bottom: rem-calc(10)
+      top: rem-calc(30)
+  &__content
+
+.box-container
+  $bg-color: #b3d8f1
+
+  &__header
+    $color: #002A59
+    $font-size: rem-calc(18)
+
+    color: $color
+    background: $bg-color
+    font-size: $font-size
+    padding: rem-calc(10)
+
+  &__content
+    $font-size: rem-calc(34)
+    border: 1px solid $bg-color
+    font-size: $font-size
+    text-align: center
+
+
+footer
+  margin-top: rem-calc(30)

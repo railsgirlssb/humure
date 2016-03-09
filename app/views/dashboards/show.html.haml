@@ -1,0 +1,27 @@
+.columns.small-12
+  - @data.each do |data|
+    .dashboard-container
+      .dashboard-container__header
+        %h3= data.team
+
+      .row.dashboard-container__content{ 'data-equalizer' => '' }
+        .columns.small-12.medium-4
+          .box-container
+            .box-container__header
+              Temperatur
+            .box-container__content{ 'data-equalizer-watch' => ''}
+              = data.display_temperature
+
+        .columns.small-12.medium-4
+          .box-container
+            .box-container__header
+              Luftfeuchtigkeit
+            .box-container__content{ 'data-equalizer-watch' => ''}
+              = data.display_humidity
+
+        .columns.small-12.medium-4
+          .box-container
+            .box-container__header
+              Lampe
+            .box-container__content{ 'data-equalizer-watch' => ''}
+              = data.lamp_icon

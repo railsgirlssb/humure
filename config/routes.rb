@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+
+  resource :dashboard, only: :show
+
   namespace :api do
     resource :humidity, only: :show
 
     resource :temperature, only: :show
 
-    resource :lamp, only: [:show] do
+    resource :lamp, only: :show do
       member do
         put :on
         put :off
@@ -12,4 +15,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  root to: 'dashboards#show'
+
 end
