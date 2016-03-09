@@ -6,15 +6,15 @@ module Api
     end
 
     def on
-      render_json_value(sensor_api.switch_light_on)
+      render_json_value(sensor_api.switch_lamp_on)
     end
 
     def off
-      render_json_value(sensor_api.switch_light_off)
+      render_json_value(sensor_api.switch_lamp_off)
     end
 
     def color
-      render_json_value(sensor_api.lamp_color(params[:red], params[:green], params[:blue]))
+      render_json_value(sensor_api.change_lamp_color(params[:red], params[:green], params[:blue]))
     end
 
   end

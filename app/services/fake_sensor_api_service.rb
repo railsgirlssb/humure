@@ -12,15 +12,15 @@ class FakeSensorApiService
     'off'
  end
 
-  def switch_light_on
+  def switch_lamp_on
     "on"
   end
 
-  def switch_light_off
+  def switch_lamp_off
     "off"
   end
 
-  def lamp_color(red, green, blue)
+  def change_lamp_color(red, green, blue)
     [240,65,36]
   end
 
