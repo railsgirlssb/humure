@@ -4,7 +4,7 @@ module Api
     protected
 
     def sensor_api
-      ::FakeSensorApiService.new
+      ::SensorApiService.new
     end
 
     def render_json_value(value)
