@@ -1,15 +1,15 @@
 class SensorApiService
 
   def humidity
-    sensor_api.humidity
+    cached_or_new_value_for(:humidity)
   end
 
   def temperature
-    sensor_api.temperature
+    cached_or_new_value_for(:temperature)
   end
 
   def lamp_status
-    sensor_api.lamp_status
+    cached_or_new_value_for(:lamp_status)
   end
 
   def switch_lamp_on
@@ -28,5 +28,21 @@ class SensorApiService
 
   def sensor_api
     ::FakeSensorApiService.new
+  end
+
+  def sensor_model
+    @sensor_model ||= begin
+      Sensor.find_by(name: "fake") || Sensor.create!(name: "fake")
+    end
+  end
+
+  def cached_or_new_value_for(field)
+    return sensor_model.send(field) if !sensor_model.expired?(field)
+
+    new_value = sensor_api.send(field)
+    return nil if new_value.nil?
+
+    sensor_model.update_field(field, new_value)
+    sensor_model.send(field)
   end
 end
