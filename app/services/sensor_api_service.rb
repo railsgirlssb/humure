@@ -1,5 +1,11 @@
 class SensorApiService
 
+  attr_reader :sensor_name
+
+  def initialize(sensor_name)
+    @sensor_name = sensor_name
+  end
+
   def humidity
     cached_or_new_value_for(:humidity)
   end
@@ -32,7 +38,7 @@ class SensorApiService
 
   def sensor_model
     @sensor_model ||= begin
-      Sensor.find_by(name: "fake") || Sensor.create!(name: "fake")
+      Sensor.find_by(name: sensor_name) || Sensor.create!(name: sensor_name)
     end
   end
 

@@ -4,7 +4,11 @@ module Api
     protected
 
     def sensor_api
-      ::SensorApiService.new
+      ::SensorApiService.new(sensor_name)
+    end
+
+    def sensor_name
+      @sensor_name ||= (request.headers["X-Sensor"] || :fake)
     end
 
     def render_json_value(value)
