@@ -2,7 +2,8 @@ class CreateSensors < ActiveRecord::Migration[5.0]
   def change
     create_table :sensors do |t|
       t.timestamps
-      t.string :name
+      t.string :name, null: false
+      t.string :token, null: false
 
       t.integer :humidity
       t.datetime :humidity_updated_at

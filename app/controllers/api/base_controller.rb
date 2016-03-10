@@ -1,14 +1,25 @@
 module Api
   class BaseController < ApplicationController
 
+    before_action :authenticate
+
     protected
 
+    def authenticate
+      token.present? || render_unauthorized
+    end
+
     def sensor_api
-      ::SensorApiService.new(sensor_name)
+      ::SensorApiService.new(sensor_name: sensor_name, token: token)
     end
 
     def sensor_name
       @sensor_name ||= (request.headers["X-Sensor"] || :fake)
+    end
+
+
+    def token
+      @token ||= request.headers["X-Token"]
     end
 
     def render_json_value(value)
@@ -17,6 +28,10 @@ module Api
       else
         render json: {}, status: :unprocessable_entity
       end
+    end
+
+    def render_unauthorized
+      render json: 'Bad credentials', status: 401
     end
 
   end

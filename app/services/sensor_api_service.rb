@@ -1,9 +1,11 @@
 class SensorApiService
 
-  attr_reader :sensor_name
+  attr_reader :sensor_name,
+              :token
 
-  def initialize(sensor_name)
+  def initialize(sensor_name:, token:)
     @sensor_name = sensor_name
+    @token = token
   end
 
   def humidity
@@ -38,7 +40,7 @@ class SensorApiService
 
   def sensor_model
     @sensor_model ||= begin
-      Sensor.find_by(name: sensor_name) || Sensor.create!(name: sensor_name)
+      Sensor.find_by(name: sensor_name, token: token) || Sensor.create!(name: sensor_name, token: token)
     end
   end
 

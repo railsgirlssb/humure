@@ -1,4 +1,7 @@
 class Sensor < ApplicationRecord
+  validates :name, presence: true
+  validates :token, presence: true
+
   serialize :colors, Array
 
   def expired?(field)
