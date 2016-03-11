@@ -21,15 +21,18 @@ class SensorApiService
   end
 
   def switch_lamp_on
-    sensor_api.switch_lamp_on
+    new_value = sensor_api.switch_lamp_on
+    update_value(:lamp_status, new_value)
   end
 
   def switch_lamp_off
-    sensor_api.switch_lamp_off
+    new_value = sensor_api.switch_lamp_off
+    update_value(:lamp_status, new_value)
   end
 
   def change_lamp_color(red, green, blue)
-    sensor_api.change_lamp_color(red, green, blue)
+    new_value = sensor_api.change_lamp_color(red, green, blue)
+    update_value(:colors, new_value)
   end
 
   protected
@@ -53,4 +56,10 @@ class SensorApiService
     sensor_model.update_field(field, new_value)
     sensor_model.send(field)
   end
+
+  def update_value(field, value)
+    sensor_model.update_field(field, value)
+    value
+  end
+
 end
