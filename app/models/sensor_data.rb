@@ -1,3 +1,0 @@
-class SensorData < OpenStruct
-
-end

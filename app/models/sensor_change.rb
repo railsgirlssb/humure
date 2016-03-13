@@ -3,9 +3,6 @@ class SensorChange < ApplicationRecord
   belongs_to :sensor
 
 
-  serialize :colors, Array
-
-
   validates :sensor_id, presence: true
   validates :field, presence: true
 

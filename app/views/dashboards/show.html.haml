@@ -2,7 +2,7 @@
   - @data.each do |data|
     .dashboard-container
       .dashboard-container__header
-        %h3= data.team
+        %h3= data.token
 
       .row.dashboard-container__content{ 'data-equalizer' => '' }
         .columns.small-12.medium-4
@@ -10,14 +10,14 @@
             .box-container__header
               Temperatur
             .box-container__content{ 'data-equalizer-watch' => ''}
-              = data.display_temperature
+              = data.temperature
 
         .columns.small-12.medium-4
           .box-container
             .box-container__header
               Luftfeuchtigkeit
             .box-container__content{ 'data-equalizer-watch' => ''}
-              = data.display_humidity
+              = data.humidity
 
         .columns.small-12.medium-4
           .box-container

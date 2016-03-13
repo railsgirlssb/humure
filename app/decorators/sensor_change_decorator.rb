@@ -1,20 +1,16 @@
-class SensorDataDecorator < Draper::Decorator
+class SensorChangeDecorator < Draper::Decorator
   delegate_all
 
-  def team
-    source[:team]
+  def humidity
+    source.value.to_s + '%'
   end
 
-  def display_humidity
-    source[:humidity].to_s + '%'
-  end
-
-  def display_temperature
-    source[:temperature].to_s + '°C'
+  def temperature
+    source.value.to_s + '°C'
   end
 
   def lamp_icon
-    if source[:lamp] == true
+    if source.value == 'on'
       h.content_tag(:i, '', class: 'fa fa-lightbulb-o fa-2x', style: "color: #{color}")
     else
       h.content_tag(:span, class: 'fa-stack fa-lg') do
@@ -28,7 +24,10 @@ class SensorDataDecorator < Draper::Decorator
   protected
 
     def color
-      RgbToHexService.convert(source[:red], source[:green], source[:blue])
+      sensor_change = source.sensor.latest_sensor_change_for_field(:colors)
+      colors = sensor_change.value? ? eval(sensor_change.value) : [255, 244, 229]
+
+      RgbToHexService.convert(colors[0], colors[1], colors[2])
     end
 
     # def humidity_color
