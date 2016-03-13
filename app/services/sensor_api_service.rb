@@ -48,18 +48,24 @@ class SensorApiService
   end
 
   def cached_or_new_value_for(field)
-    return sensor_model.send(field) if !sensor_model.expired?(field)
+    sensor_change = latest_sensor_change(field)
+    return sensor_change.value if sensor_model.present? and !sensor_change.expired?
 
     new_value = sensor_api.send(field)
     return nil if new_value.nil?
 
-    sensor_model.update_field(field, new_value)
-    sensor_model.send(field)
+    update_value(field, new_value)
   end
 
-  def update_value(field, value)
-    sensor_model.update_field(field, value)
-    value
+  def update_value(field, new_value)
+    sensor_change = latest_sensor_change(field)
+    return sensor_change.value if sensor_change.value == new_value.to_s
+
+    SensorChange.create_for_field(field, sensor_model.id, new_value).value
+  end
+
+  def latest_sensor_change(field)
+    sensor_model.latest_sensor_change_for_field(field)
   end
 
 end

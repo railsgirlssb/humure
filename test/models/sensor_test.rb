@@ -1,16 +1,16 @@
 require 'test_helper'
 
 class SensorTest < ActiveSupport::TestCase
-  test "expired?" do
+  test "latest_sensor_change_for_field" do
     sensor = Sensor.new
-    assert_equal true, sensor.expired?(:temperature)
+    sensor_change = sensor.latest_sensor_change_for_field(:temperature)
+    assert_equal true, sensor_change.new_record?
 
-    travel_to Time.new(2016, 1, 1, 0, 0, 4) do
-      sensor = Sensor.new(temperature: 23.0, temperature_updated_at: 2.seconds.ago)
-      assert_equal false, sensor.expired?(:temperature)
 
-      sensor.temperature_updated_at = 4.seconds.ago
-      assert_equal true, sensor.expired?(:temperature)
-    end
+    sensor = Sensor.create(token: 'token', name: 'test')
+    sensor_change = SensorChange.create(sensor_id: sensor.id, field: 'temperature')
+    new_sensor_change = sensor.reload.latest_sensor_change_for_field(:temperature)
+    assert_equal false, new_sensor_change.new_record?
+    assert_equal true, new_sensor_change == sensor_change
   end
 end
